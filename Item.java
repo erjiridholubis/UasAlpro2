@@ -1,5 +1,8 @@
 class Item {
-  public static void main(String[] args) {
 
-  }
+  int id;
+  String nama_barang;
+  int harga;
+  int stok;
+  
 }

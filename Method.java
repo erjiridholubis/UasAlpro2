@@ -1,5 +1,6 @@
 class Method {
-  public static void main(String[] args) {
 
-  }
+  int id;
+  String nama_metode;
+  String rekening;
 }

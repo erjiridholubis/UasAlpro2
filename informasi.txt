@@ -18,31 +18,31 @@ Objek :
 
 
 Variable :
-    - Invoice
-    - invoice
-    - id barang (multi)
-    - id pelanggan
-    - id metode
-    - tempo
-    - total
-    - status
+  - Invoice
+    • invoice
+    • id barang (multi)
+    • id pelanggan
+    • id metode
+    • tempo
+    • total
+    • status
 
-	     - Pelanggan
-    - id
-    - nama_pelanggan
-    - alamat_pelanggan
-    - no_hp
+	- Pelanggan
+    • id
+    • nama_pelanggan
+    • alamat_pelanggan
+    • no_hp
 
-	     - Barang
-    - id
-    - nama_barang
-    - harga
-    - stok
+	- Barang
+    • id
+    • nama_barang
+    • harga
+    • stok
 
-	     - Metode
-    - id
-    - nama_metode
-    - rekening
+	- Metode
+    • id
+    • nama_metode
+    • rekening
 
 
 Algoritma :
