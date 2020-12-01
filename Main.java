@@ -1,8 +1,8 @@
-import java.util.Scanner;
+import java.util.*;
 
 class Main {
   public static void main(String[] args) {
-    java.util.Scanner input = new Scanner(System.in);
+    Scanner input = new Scanner(System.in);
     String mulai = "y";
     int menu, submenu;
 
