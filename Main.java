@@ -34,8 +34,8 @@ class Main {
           System.out.println("panggil fungsi tambah data pelanggan");
 
         } else if (submenu == 2) {
-           // panggil fungsi ubah data pelanggan
-           System.out.println("panggil fungsi ubah data pelanggan");
+          // panggil fungsi ubah data pelanggan
+          System.out.println("panggil fungsi ubah data pelanggan");
 
         } else if (submenu == 3) {
           // panggil fungsi cari data pelanggan
@@ -55,26 +55,26 @@ class Main {
         System.out.println("2. Ubah data barang");
         System.out.println("3. Cari barang");
 
-                System.out.print("Silahkan Pilih Submenu : ");
-                submenu = input.nextInt();
+        System.out.print("Silahkan Pilih Submenu : ");
+        submenu = input.nextInt();
 
-                if (submenu == 1) {
-                  // panggil fungsi tambah data barang
-                  System.out.println("panggil fungsi tambah data barang");
+        if (submenu == 1) {
+          // panggil fungsi tambah data barang
+          System.out.println("panggil fungsi tambah data barang");
 
-                } else if (submenu == 2) {
-                   // panggil fungsi ubah data barang
-                   System.out.println("panggil fungsi ubah data barang");
+        } else if (submenu == 2) {
+          // panggil fungsi ubah data barang
+          System.out.println("panggil fungsi ubah data barang");
 
-                } else if (submenu == 3) {
-                  // panggil fungsi cari data barang
-                  System.out.println("panggil fungsi cari data barang");
+        } else if (submenu == 3) {
+          // panggil fungsi cari data barang
+          System.out.println("panggil fungsi cari data barang");
 
-                } else {
-                  System.out.println("Maaf, pilihan tidak tersedia.");
-                  mulai = "y";
+        } else {
+          System.out.println("Maaf, pilihan tidak tersedia.");
+          mulai = "y";
 
-                }
+        }
 
       } else if (menu == 3) {
         // Method method1 = new Method();
@@ -84,22 +84,22 @@ class Main {
         System.out.println("2. Ubah metode pembayaran");
 
 
-                System.out.print("Silahkan Pilih Submenu : ");
-                submenu = input.nextInt();
+        System.out.print("Silahkan Pilih Submenu : ");
+        submenu = input.nextInt();
 
-                if (submenu == 1) {
-                  // panggil fungsi tambah data pembayaran
-                  System.out.println("panggil fungsi tambah data pembayaran");
+        if (submenu == 1) {
+          // panggil fungsi tambah data pembayaran
+          System.out.println("panggil fungsi tambah data pembayaran");
 
-                } else if (submenu == 2) {
-                   // panggil fungsi ubah data pembayaran
-                   System.out.println("panggil fungsi ubah data pembayaran");
+        } else if (submenu == 2) {
+          // panggil fungsi ubah data pembayaran
+          System.out.println("panggil fungsi ubah data pembayaran");
 
-                } else {
-                  System.out.println("Maaf, pilihan tidak tersedia.");
-                  mulai = "y";
+        } else {
+          System.out.println("Maaf, pilihan tidak tersedia.");
+          mulai = "y";
 
-                }
+        }
 
       } else if (menu == 4) {
         // Invoice invoice1 = new Invoice();
@@ -111,34 +111,34 @@ class Main {
         System.out.println("5. Cari Invoice");
 
 
-                System.out.print("Silahkan Pilih Submenu : ");
-                submenu = input.nextInt();
+        System.out.print("Silahkan Pilih Submenu : ");
+        submenu = input.nextInt();
 
-                if (submenu == 1) {
-                  // panggil fungsi tambah data tagihan
-                  System.out.println("panggil fungsi tambah data tagihan");
+        if (submenu == 1) {
+          // panggil fungsi tambah data tagihan
+          System.out.println("panggil fungsi tambah data tagihan");
 
-                } else if (submenu == 2) {
-                   // panggil fungsi urutan data tagihan berdasarkan nominal
-                   System.out.println("panggil fungsi urutan data tagihan berdasarkan nominal");
+        } else if (submenu == 2) {
+          // panggil fungsi urutan data tagihan berdasarkan nominal
+          System.out.println("panggil fungsi urutan data tagihan berdasarkan nominal");
 
-                } else if (submenu == 3) {
-                  // panggil fungsi urutan data tagihan berdasarkan tempo
-                  System.out.println("panggil fungsi urutan data tagihan berdasarkan tempo");
+        } else if (submenu == 3) {
+          // panggil fungsi urutan data tagihan berdasarkan tempo
+          System.out.println("panggil fungsi urutan data tagihan berdasarkan tempo");
 
-                } else if (submenu == 4) {
-                  // panggil fungsi ubah status pembayaran
-                  System.out.println("panggil fungsi status pembayaran");
+        } else if (submenu == 4) {
+          // panggil fungsi ubah status pembayaran
+          System.out.println("panggil fungsi status pembayaran");
 
-                } else if (submenu == 5) {
-                  // panggil fungsi cari invoice
-                  System.out.println("panggil fungsi cari invoice");
+        } else if (submenu == 5) {
+          // panggil fungsi cari invoice
+          System.out.println("panggil fungsi cari invoice");
 
-                } else {
-                  System.out.println("Maaf, pilihan tidak tersedia.");
-                  mulai = "y";
+        } else {
+          System.out.println("Maaf, pilihan tidak tersedia.");
+          mulai = "y";
 
-                }
+        }
 
       } else if (menu == 5) {
         System.out.println("Terima kasih");
