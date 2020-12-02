@@ -7,9 +7,15 @@ class Main {
     int menu, submenu;
 
     List<Customer> dCustomer = new ArrayList<Customer>();
-    List<Item> dItem = new ArrayList<Item>();
-    List<Method> dMethod = new ArrayList<Method>();
-    List<Invoice> dInvoice = new ArrayList<Invoice>();
+    // List<Item> dItem = new ArrayList<Item>();
+    // List<Method> dMethod = new ArrayList<Method>();
+    // List<Invoice> dInvoice = new ArrayList<Invoice>();
+
+    Customer cs1 = new Customer(1,"udin","palembang","082280847476");
+    Customer cs2 = new Customer(2,"ujang","palembang","082280847477");
+
+    dCustomer.add(cs1); //urutan 0
+    dCustomer.add(cs2); //urutan 1
 
     while (mulai.equals("y")) {
       System.out.println("=====Aplikasi Catatan Hutang=====");
@@ -30,24 +36,36 @@ class Main {
         System.out.println("1. Tambah data pelanggan");
         System.out.println("2. Ubah data pelanggan");
         System.out.println("3. Cari data pelanggan");
+        System.out.println("4. Tampil data pelanggan");
 
         System.out.print("Silahkan Pilih Submenu : ");
         submenu = input.nextInt();
 
         if (submenu == 1) {
           // panggil fungsi tambah data pelanggan
-          System.out.println("panggil fungsi tambah data pelanggan");
+          // System.out.println("panggil fungsi tambah data pelanggan");
+          // System.out.println();
+
+          AddCustomer(dCustomer, input);
           System.out.println();
+          GetCustomer(dCustomer);
 
 
 
         } else if (submenu == 2) {
           // panggil fungsi ubah data pelanggan
-          System.out.println("panggil fungsi ubah data pelanggan");
+          // System.out.println("panggil fungsi ubah data pelanggan");
+          UpdateCustomer(dCustomer, input);
 
         } else if (submenu == 3) {
           // panggil fungsi cari data pelanggan
           System.out.println("panggil fungsi cari data pelanggan");
+
+        } else if (submenu == 4) {
+          // panggil fungsi tampil data pelanggan
+          // System.out.println("panggil fungsi tampil data pelanggan");
+          System.out.println();
+          GetCustomer(dCustomer);
 
         } else {
           System.out.println("Maaf, pilihan tidak tersedia.");
@@ -168,8 +186,87 @@ class Main {
 
   // CRUD Customer
 
-  // public static void AddCustomer() {}
+  public static void AddCustomer(List<Customer> dCustomer, Scanner input) {
+    int id;
+    String nama_pelanggan, alamat_pelanggan, no_hp;
 
+    System.out.println("------------------------------------");
+    System.out.println("INPUT DATA PELANGGAN");
+    System.out.println("------------------------------------");
+    System.out.println();
+
+    System.out.print("ID : ");
+    id = input.nextInt();
+
+    System.out.print("NAMA : ");
+    nama_pelanggan = input.next();
+
+    System.out.print("ALAMAT : ");
+    alamat_pelanggan = input.next();
+
+    System.out.print("HP : ");
+    no_hp = input.next();
+
+    Customer cs = new Customer(id,nama_pelanggan,alamat_pelanggan,no_hp);
+    dCustomer.add(cs);
+
+    System.out.println();
+    System.out.println("Data berhasil diinput");
+
+  }
+
+  public static void GetCustomer(List<Customer> dCustomer) {
+    System.out.println();
+
+    for (int i=0; i<dCustomer.size(); i++) {
+      System.out.println();
+      System.out.println("ID : "+dCustomer.get(i).id);
+      System.out.println("NAMA : "+dCustomer.get(i).nama_pelanggan);
+      System.out.println("ALAMAT : "+dCustomer.get(i).alamat_pelanggan);
+      System.out.println("HP : "+dCustomer.get(i).no_hp);
+      System.out.println();
+    }
+  }
+
+  public static void UpdateCustomer(List<Customer> dCustomer, Scanner input) {
+    int id;
+    String nama_pelanggan, alamat_pelanggan, no_hp;
+
+
+    System.out.println("------------------------------------");
+    System.out.println("UPDATE DATA PELANGGAN");
+    System.out.println("------------------------------------");
+    System.out.println();
+
+    System.out.print("ID : ");
+    id = input.nextInt();
+
+    if ((dCustomer.size() < id) || dCustomer.get(id-1).id != id) {
+
+      System.out.println();
+      System.out.println("Data tidak ditemukan.");
+
+    } else {
+
+      System.out.print("NAMA BARU : ");
+      nama_pelanggan = input.next();
+
+      System.out.print("ALAMAT BARU : ");
+      alamat_pelanggan = input.next();
+
+      System.out.print("HP BARU: ");
+      no_hp = input.next();
+
+      Customer cs = new Customer(id,nama_pelanggan,alamat_pelanggan,no_hp);
+      dCustomer.set(id-1,cs);
+
+      System.out.println();
+      System.out.println("Data berhasil diupdate");
+
+    }
+
+
+  }
 
 
 }
