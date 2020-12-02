@@ -11,14 +11,10 @@ class Main {
     List<Method> dMethod = new ArrayList<Method>();
     List<Invoice> dInvoice = new ArrayList<Invoice>();
 
-    Customer cs1 = new Customer(1, "udin", "palembang", "082280847476");
-    Customer cs2 = new Customer(2, "ujang", "palembang", "082280847477");
-
-    dCustomer.add(cs1); // urutan 0
-    dCustomer.add(cs2); // urutan 1
-
     while (mulai.equals("y")) {
       System.out.println("=====Aplikasi Catatan Hutang=====");
+      System.out.println();
+
       System.out.println("Pilihan Menu:");
       System.out.println("1. pelanggan");
       System.out.println("2. Barang");
@@ -26,43 +22,49 @@ class Main {
       System.out.println("4. Tagihan");
       System.out.println("5. Keluar");
 
+      System.out.println();
       System.out.print("Silahkan Pilih Menu : ");
       menu = input.nextInt();
+      System.out.println("-------------------------------------------");
 
       if (menu == 1) {
-        // Customer customer1 = new Customer();
-
         System.out.println();
+
+        System.out.println(">> Menu Pelanggan");
         System.out.println("1. Tambah data pelanggan");
         System.out.println("2. Ubah data pelanggan");
         System.out.println("3. Cari data pelanggan");
         System.out.println("4. Tampil data pelanggan");
 
+        System.out.println();
         System.out.print("Silahkan Pilih Submenu : ");
         submenu = input.nextInt();
 
         if (submenu == 1) {
           // panggil fungsi tambah data pelanggan
-          // System.out.println("panggil fungsi tambah data pelanggan");
-          // System.out.println();
 
-          AddCustomer(dCustomer, input);
           System.out.println();
-          GetCustomer(dCustomer);
+          AddCustomer(dCustomer, input);
+          System.out.println("-------------------------------------------");
 
         } else if (submenu == 2) {
           // panggil fungsi ubah data pelanggan
-          // System.out.println("panggil fungsi ubah data pelanggan");
+
+          System.out.println();
           UpdateCustomer(dCustomer, input);
+          System.out.println("-------------------------------------------");
 
         } else if (submenu == 3) {
           // panggil fungsi cari data pelanggan
-          System.out.println("panggil fungsi cari data pelanggan");
+
+          System.out.println();
+          SearchCustomer(dCustomer, input);
+          System.out.println("-------------------------------------------");
 
         } else if (submenu == 4) {
           // panggil fungsi tampil data pelanggan
-          // System.out.println("panggil fungsi tampil data pelanggan");
-          System.out.println();
+
+          System.out.println("-------------------------------------------");
           GetCustomer(dCustomer);
 
         } else {
@@ -72,35 +74,43 @@ class Main {
         }
 
       } else if (menu == 2) {
-        // Item item1 = new Item();
-
         System.out.println();
+
+        System.out.println(">> Menu Barang");
         System.out.println("1. Tambah data barang");
         System.out.println("2. Ubah data barang");
         System.out.println("3. Cari barang");
         System.out.println("4. Tampil data barang");
 
+        System.out.println();
         System.out.print("Silahkan Pilih Submenu : ");
         submenu = input.nextInt();
 
         if (submenu == 1) {
           // panggil fungsi tambah data barang
-          System.out.println("panggil fungsi tambah data barang");
+
+          System.out.println();
           AddItem(dItem, input);
+          System.out.println("-------------------------------------------");
 
         } else if (submenu == 2) {
           // panggil fungsi ubah data barang
-          System.out.println("panggil fungsi ubah data barang");
+
+          System.out.println();
           UpdateCustomer(dCustomer, input);
+          System.out.println("-------------------------------------------");
 
         } else if (submenu == 3) {
           // panggil fungsi cari data barang
-          System.out.println("panggil fungsi cari data barang");
+
+          System.out.println();
           SearchItem(dItem, input);
+          System.out.println("-------------------------------------------");
 
         } else if (submenu == 4) {
           // panggil fungsi cari data barang
-          System.out.println("panggil fungsi tampil data barang");
+
+          System.out.println("-------------------------------------------");
           GetItem(dItem);
 
         } else {
@@ -110,22 +120,35 @@ class Main {
         }
 
       } else if (menu == 3) {
-        // Method method1 = new Method();
-
         System.out.println();
-        System.out.println("1. Pilih metode pembayaran");
+
+        System.out.println(">> Menu Metode Pembayaran");
+        System.out.println("1. Tambah metode pembayaran");
         System.out.println("2. Ubah metode pembayaran");
+        System.out.println("3. Lihat Seluruh Metode Pembayaran");
 
         System.out.print("Silahkan Pilih Submenu : ");
         submenu = input.nextInt();
 
         if (submenu == 1) {
           // panggil fungsi tambah data pembayaran
-          System.out.println("panggil fungsi tambah data pembayaran");
+
+          System.out.println();
+          AddMethod(dMethod, input);
+          System.out.println("-------------------------------------------");
 
         } else if (submenu == 2) {
           // panggil fungsi ubah data pembayaran
-          System.out.println("panggil fungsi ubah data pembayaran");
+
+          System.out.println();
+          UpdateMethod(dMethod, input);
+          System.out.println("-------------------------------------------");
+
+        } else if (submenu == 3) {
+          // panggil fungsi lihat data pembayaran
+
+          System.out.println("-------------------------------------------");
+          GetMethod(dMethod);
 
         } else {
           System.out.println("Maaf, pilihan tidak tersedia.");
@@ -134,14 +157,16 @@ class Main {
         }
 
       } else if (menu == 4) {
-        // Invoice invoice1 = new Invoice();
         System.out.println();
+
+        System.out.println(">> Menu Tagihan");
         System.out.println("1. Masukkan invoice");
         System.out.println("2. Urutkan nominal hutang");
         System.out.println("3. Urutkan tempo hutang");
         System.out.println("4. Ubah status pembayaran");
         System.out.println("5. Cari Invoice");
 
+        System.out.println();
         System.out.print("Silahkan Pilih Submenu : ");
         submenu = input.nextInt();
 
@@ -266,6 +291,34 @@ class Main {
       System.out.println();
       System.out.println("Data berhasil diupdate");
 
+    }
+
+  }
+
+  public static void SearchCustomer(List<Customer> dCustomer, Scanner input) {
+    int id, harga, stok;
+    String nama_barang;
+
+    System.out.println("------------------------------------");
+    System.out.println("PENCARIAN DATA CUSTOMER");
+    System.out.println("------------------------------------");
+    System.out.println();
+
+    System.out.print("ID CUSTOMER : ");
+    id = input.nextInt();
+
+    if ((dCustomer.size() < id) || dCustomer.get(id-1).id != id) {
+      System.out.println();
+      System.out.println("Data Customer tidak ditemukan.");
+
+    } else {
+      System.out.println("Data Customer ditemukan");
+      System.out.println();
+      System.out.println("ID : " + dCustomer.get(id-1).id);
+      System.out.println("NAMA : " + dCustomer.get(id-1).nama_pelanggan);
+      System.out.println("ALAMAT : " + dCustomer.get(id-1).alamat_pelanggan);
+      System.out.println("HP : " + dCustomer.get(id-1).no_hp);
+      System.out.println();
     }
 
   }
@@ -396,7 +449,7 @@ class Main {
     dMethod.add(mt);
 
     System.out.println();
-    System.out.println("Metode pembayran diterima");
+    System.out.println("Metode pembayaran berhasil diinput.");
 
   }
 
@@ -441,6 +494,6 @@ class Main {
     }
 
   }
-  
+
 
 }
