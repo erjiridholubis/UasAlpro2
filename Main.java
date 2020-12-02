@@ -6,6 +6,11 @@ class Main {
     String mulai = "y";
     int menu, submenu;
 
+    List<Customer> dCustomer = new ArrayList<Customer>();
+    List<Item> dItem = new ArrayList<Item>();
+    List<Method> dMethod = new ArrayList<Method>();
+    List<Invoice> dInvoice = new ArrayList<Invoice>();
+
     while (mulai.equals("y")) {
       System.out.println("=====Aplikasi Catatan Hutang=====");
       System.out.println("Pilihan Menu:");
@@ -32,6 +37,9 @@ class Main {
         if (submenu == 1) {
           // panggil fungsi tambah data pelanggan
           System.out.println("panggil fungsi tambah data pelanggan");
+          System.out.println();
+
+
 
         } else if (submenu == 2) {
           // panggil fungsi ubah data pelanggan
@@ -157,4 +165,11 @@ class Main {
     System.out.println("Terima kasih, program dihentikan");
 
   }
+
+  // CRUD Customer
+
+  // public static void AddCustomer() {}
+
+
+
 }
