@@ -173,6 +173,9 @@ class Main {
         if (submenu == 1) {
           // panggil fungsi tambah data tagihan
           System.out.println("panggil fungsi tambah data tagihan");
+          AddInvoice(dInvoice, input);
+          System.out.println();
+          GetInvoice(dInvoice);
 
         } else if (submenu == 2) {
           // panggil fungsi urutan data tagihan berdasarkan nominal
@@ -185,6 +188,7 @@ class Main {
         } else if (submenu == 4) {
           // panggil fungsi ubah status pembayaran
           System.out.println("panggil fungsi status pembayaran");
+          UpdateInvoice(dInvoice, input);
 
         } else if (submenu == 5) {
           // panggil fungsi cari invoice
@@ -491,6 +495,99 @@ class Main {
 
       Method mt = new Method(id, nama_metode, rekening);
       dmMethod.set(id - 1, mt);
+    }
+
+  }
+
+  // CRUD INVOICE
+  public static void AddInvoice(List<Invoice> dInvoice, Scanner input) {
+    int invoice;
+    int[] id_barang = new int[3];
+    int id_pelanggan;
+    int id_metode;
+    String tempo;
+    int total;
+    String status;
+
+    System.out.println("------------------------------------");
+    System.out.println("INPUT NOMOR INVOICE");
+    System.out.println("------------------------------------");
+    System.out.println();
+
+    System.out.print("INVOICE : ");
+    invoice= input.nextInt();
+
+    System.out.print("ID PELANGGAN : ");
+    id_pelanggan = input.nextInt();
+
+    System.out.print("ID METODE PEMBAYARAN : ");
+    id_metode = input.nextInt();
+
+    System.out.print("TEMPO PEMBAYARAN : ");
+    tempo = input.next();
+
+    System.out.print("STATUS PEMBAYARAN : ");
+    status = input.next();
+
+    Invoice iv = new Invoice(invoice, id_barang, id_pelanggan, id_metode, tempo, total, status);
+    dInvoice.add(iv);
+
+    System.out.println();
+    System.out.println("INVOICE BERHASIL");
+
+  }
+
+  public static void GetInvoice(List<Invoice> diInvoice ){
+    System.out.println();
+
+    for (int i = 0; i < diInvoice.size(); i++) {
+      System.out.println();
+      System.out.println("INVOICE PEMBAYARAN : " + diInvoice.get(i).invoice);
+      System.out.println("ID PELANGGAN : " + diInvoice.get(i).id_pelanggan);
+      System.out.println("ID METODE PEMBAYARAN : " + diInvoice.get(i).id_metode);
+      System.out.println("TEMPO PEMBAYARAN : " + diInvoice.get(i).tempo);
+      System.out.println("STATUS PEMBAYARAN : " + diInvoice.get(i).status);
+      System.out.println();
+    }
+
+  }
+
+  public static void UpdateInvoice(List<Invoice> dInvoice, Scanner input) {
+    int invoice;
+    int[] id_barang = new int[3];
+    int id_pelanggan;
+    int id_metode;
+    String tempo;
+    int total;
+    String status;
+
+    System.out.println("------------------------------------");
+    System.out.println("UPDATE DATA INVOICE");
+    System.out.println("------------------------------------");
+    System.out.println();
+
+    System.out.print("INVOICE : ");
+    invoice = input.nextInt();
+
+    if ((dInvoice.size() < invoice) || dInvoice.get(invoice - 1).invoice != invoice) {
+      System.out.println();
+      System.out.println("Data metode pembayaran tidak ditemukan.");
+
+    } else {
+      System.out.print("ID PELANGGAN : ");
+      id_pelanggan = input.nextInt();
+  
+      System.out.print("ID METODE PEMBAYARAN : ");
+      id_metode = input.nextInt();
+  
+      System.out.print("TEMPO PEMBAYARAN : ");
+      tempo = input.next();
+  
+      System.out.print("STATUS PEMBAYARAN : ");
+      status = input.next();
+
+      Invoice iv = new Invoice(invoice, id_barang, id_pelanggan, id_metode, tempo, total, status);
+      dInvoice.set(invoice - 1, iv);
     }
 
   }
