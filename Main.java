@@ -7,9 +7,9 @@ class Main {
     int menu, submenu;
 
     List<Customer> dCustomer = new ArrayList<Customer>();
-    // List<Item> dItem = new ArrayList<Item>();
-    // List<Method> dMethod = new ArrayList<Method>();
-    // List<Invoice> dInvoice = new ArrayList<Invoice>();
+    List<Item> dItem = new ArrayList<Item>();
+    List<Method> dMethod = new ArrayList<Method>();
+    List<Invoice> dInvoice = new ArrayList<Invoice>();
 
     Customer cs1 = new Customer(1, "udin", "palembang", "082280847476");
     Customer cs2 = new Customer(2, "ujang", "palembang", "082280847477");
@@ -190,7 +190,6 @@ class Main {
   }
 
   // CRUD Customer
-
   public static void AddCustomer(List<Customer> dCustomer, Scanner input) {
     int id;
     String nama_pelanggan, alamat_pelanggan, no_hp;
@@ -272,7 +271,6 @@ class Main {
   }
 
   // CRUD ITEM
-
   public static void AddItem(List<Item> dItem, Scanner input) {
     int id, harga, stok;
     String nama_barang;
@@ -359,14 +357,90 @@ class Main {
     System.out.print("ID BARANG : ");
     id = input.nextInt();
 
-    if ((dItem.size() < id) || dItem.get(id - 1).id != id) {
+    if ((dItem.size() < id) || dItem.get(id-1).id != id) {
       System.out.println();
       System.out.println("Data barang tidak ditemukan.");
 
     } else {
-      System.out.println("Data ditemukan");
+      System.out.println("Data barang ditemukan");
+      System.out.println();
+      System.out.println("ID : " + dItem.get(id-1).id);
+      System.out.println("NAMA BARANG : " + dItem.get(id-1).nama_barang);
+      System.out.println("HARGA : " + dItem.get(id-1).harga);
+      System.out.println("STOK : " + dItem.get(id-1).stok);
+      System.out.println();
     }
 
   }
+
+  // CRUD  METHOD
+  public static void AddMethod(List<Method> dMethod, Scanner input) {
+    int id;
+    String nama_metode, rekening;
+
+    System.out.println("------------------------------------");
+    System.out.println("INPUT METODE PEMBAYARAN");
+    System.out.println("------------------------------------");
+    System.out.println();
+
+    System.out.print("ID : ");
+    id = input.nextInt();
+
+    System.out.print("NAMA METODE PEMBAYARAN : ");
+    nama_metode = input.next();
+
+    System.out.print("REKENING : ");
+    rekening = input.next();
+
+    Method mt = new Method(id, nama_metode, rekening);
+    dMethod.add(mt);
+
+    System.out.println();
+    System.out.println("Metode pembayran diterima");
+
+  }
+
+  public static void GetMethod(List<Method> dMethod) {
+    System.out.println();
+
+    for (int i = 0; i < dMethod.size(); i++) {
+      System.out.println();
+      System.out.println("ID : " + dMethod.get(i).id);
+      System.out.println("NAMA METODE PEMBAYRAN : " + dMethod.get(i).nama_metode);
+      System.out.println("REKENING : " + dMethod.get(i).rekening);
+      System.out.println();
+    }
+
+  }
+
+  public static void UpdateMethod(List<Method> dmMethod, Scanner input) {
+    int id;
+    String nama_metode, rekening;
+
+    System.out.println("------------------------------------");
+    System.out.println("UPDATE METODE PEMBAYARAN");
+    System.out.println("------------------------------------");
+    System.out.println();
+
+    System.out.print("ID : ");
+    id = input.nextInt();
+
+    if ((dmMethod.size() < id) || dmMethod.get(id - 1).id != id) {
+      System.out.println();
+      System.out.println("Data metode pembayaran tidak ditemukan.");
+
+    } else {
+      System.out.print("NAMA METODE PEMBAYARAN: ");
+      nama_metode = input.next();
+
+      System.out.print("REKENING BARU: ");
+      rekening = input.next();
+
+      Method mt = new Method(id, nama_metode, rekening);
+      dmMethod.set(id - 1, mt);
+    }
+
+  }
+  
 
 }
