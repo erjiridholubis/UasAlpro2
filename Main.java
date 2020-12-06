@@ -11,10 +11,51 @@ class Main {
     List<Method> dMethod = new ArrayList<Method>();
     List<Invoice> dInvoice = new ArrayList<Invoice>();
 
-    // Random randomNumbers = new Random();
-    //
-    // System.out.println(randomNumbers.nextInt());
-    // System.out.println(dInvoice.size()+1);
+    /// ----------------- data center ---------------------
+
+    String customer[][] = { { "megi", "banyuasin", "082280847471" }, { "erji", "pagaralam", "082280847472" },
+        { "amay", "palembang", "082280847473" }, };
+
+    for (int i = 0; i < customer.length; i++) {
+      Customer cs = new Customer(i + 1, customer[i][0], customer[i][1], customer[i][2]);
+      dCustomer.add(cs);
+    }
+
+    String item[][] = { { "odol", "15000", "5" }, { "sampo", "2000", "6" }, { "sabun", "4000", "7" },
+        { "deterjen", "5000", "8" }, };
+
+    for (int i = 0; i < item.length; i++) {
+      Item it = new Item(i + 1, item[i][0], Integer.parseInt(item[i][1]), Integer.parseInt(item[i][2]));
+      dItem.add(it);
+    }
+
+    String method[][] = { { "dana", "0812312313" }, { "gopay", "083242342" }, { "ovo", "039349384" }, };
+
+    for (int i = 0; i < method.length; i++) {
+      Method mt = new Method(i + 1, method[i][0], method[i][1]);
+      dMethod.add(mt);
+    }
+
+    int id_barang[][] = { 
+        { 1, 2, 3 }, // total = 21000
+        { 2, 2, 3 }, // total = 8000
+        { 1, 1, 3 }, // total = 34000
+        { 1, 1, 2 }, // total = 32000
+    };
+
+    // int id_barang[] = {1,2,3};
+
+    String invoice[][] = { { "1", "2", "2020/12/20", "21000", "utang" }, { "2", "1", "2020/12/12", "8000", "utang" },
+        { "3", "1", "2020/12/25", "34000", "utang" }, { "1", "3", "2020/12/27", "8000", "utang" }, };
+
+    for (int i = 0; i < invoice.length; i++) {
+      Invoice iv = new Invoice(i + 1, id_barang[i], Integer.parseInt(invoice[i][0]), Integer.parseInt(invoice[i][1]),
+          invoice[i][2], Integer.parseInt(invoice[i][3]), invoice[i][4]);
+      // inv, idb, idp, idm tempo total status
+      dInvoice.add(iv);
+    }
+
+    /// ----------------- data center ---------------------
 
     while (mulai.equals("y")) {
       System.out.println("=====Aplikasi Catatan Hutang=====");
@@ -181,17 +222,20 @@ class Main {
           System.out.println();
           AddInvoice(dInvoice, dCustomer, dItem, dMethod, input);
           System.out.println("-------------------------------------------");
+          // GetInvoice(dInvoice);
 
         } else if (submenu == 2) {
           // panggil fungsi urutan data tagihan berdasarkan nominal
           System.out.println();
-          System.out.println("panggil fungsi urutan data tagihan berdasarkan nominal");
+          // System.out.println("panggil fungsi urutan data tagihan berdasarkan nominal");
+          GetInvoice(dInvoice);
           System.out.println("-------------------------------------------");
 
         } else if (submenu == 3) {
           // panggil fungsi urutan data tagihan berdasarkan tempo
           System.out.println();
-          System.out.println("panggil fungsi urutan data tagihan berdasarkan tempo");
+          // System.out.println("panggil fungsi urutan data tagihan berdasarkan tempo");
+          SortWithDate(dInvoice, dCustomer, dItem, dMethod);
           System.out.println("-------------------------------------------");
 
         } else if (submenu == 4) {
@@ -231,6 +275,8 @@ class Main {
 
   }
 
+  // -----------------------------------------------------------------------------------------------
+
   // CRUD Customer
   public static void AddCustomer(List<Customer> dCustomer, Scanner input) {
     int id;
@@ -243,7 +289,7 @@ class Main {
 
     // System.out.print("ID : ");
     // id = input.nextInt();
-    id = dCustomer.size()+1;
+    id = dCustomer.size() + 1;
 
     System.out.print("NAMA : ");
     nama_pelanggan = input.next();
@@ -330,21 +376,23 @@ class Main {
     System.out.print("ID CUSTOMER : ");
     id = input.nextInt();
 
-    if ((dCustomer.size() < id) || dCustomer.get(id-1).id != id) {
+    if ((dCustomer.size() < id) || dCustomer.get(id - 1).id != id) {
       System.out.println();
       System.out.println("Data Customer tidak ditemukan.");
 
     } else {
       System.out.println("Data Customer ditemukan");
       System.out.println();
-      System.out.println("ID : " + dCustomer.get(id-1).id);
-      System.out.println("NAMA : " + dCustomer.get(id-1).nama_pelanggan);
-      System.out.println("ALAMAT : " + dCustomer.get(id-1).alamat_pelanggan);
-      System.out.println("HP : " + dCustomer.get(id-1).no_hp);
+      System.out.println("ID : " + dCustomer.get(id - 1).id);
+      System.out.println("NAMA : " + dCustomer.get(id - 1).nama_pelanggan);
+      System.out.println("ALAMAT : " + dCustomer.get(id - 1).alamat_pelanggan);
+      System.out.println("HP : " + dCustomer.get(id - 1).no_hp);
       System.out.println();
     }
 
   }
+
+  // -----------------------------------------------------------------------------------------------
 
   // CRUD ITEM
   public static void AddItem(List<Item> dItem, Scanner input) {
@@ -358,7 +406,7 @@ class Main {
 
     // System.out.print("ID : ");
     // id = input.nextInt();
-    id = dItem.size()+1;
+    id = dItem.size() + 1;
 
     System.out.print("NAMA BARANG : ");
     nama_barang = input.next();
@@ -390,7 +438,7 @@ class Main {
         System.out.println("STOK : " + dItem.get(i).stok);
         System.out.println();
       }
-    }  else {
+    } else {
       System.out.println();
       System.out.println("Data belum tersedia, silahkan inputkan data.");
     }
@@ -440,23 +488,25 @@ class Main {
     System.out.print("ID BARANG : ");
     id = input.nextInt();
 
-    if ((dItem.size() < id) || dItem.get(id-1).id != id) {
+    if ((dItem.size() < id) || dItem.get(id - 1).id != id) {
       System.out.println();
       System.out.println("Data barang tidak ditemukan.");
 
     } else {
       System.out.println("Data barang ditemukan");
       System.out.println();
-      System.out.println("ID : " + dItem.get(id-1).id);
-      System.out.println("NAMA BARANG : " + dItem.get(id-1).nama_barang);
-      System.out.println("HARGA : " + dItem.get(id-1).harga);
-      System.out.println("STOK : " + dItem.get(id-1).stok);
+      System.out.println("ID : " + dItem.get(id - 1).id);
+      System.out.println("NAMA BARANG : " + dItem.get(id - 1).nama_barang);
+      System.out.println("HARGA : " + dItem.get(id - 1).harga);
+      System.out.println("STOK : " + dItem.get(id - 1).stok);
       System.out.println();
     }
 
   }
 
-  // CRUD  METHOD
+  // -----------------------------------------------------------------------------------------------
+
+  // CRUD METHOD
   public static void AddMethod(List<Method> dMethod, Scanner input) {
     int id;
     String nama_metode, rekening;
@@ -468,7 +518,7 @@ class Main {
 
     // System.out.print("ID : ");
     // id = input.nextInt();
-    id = dMethod.size()+1;
+    id = dMethod.size() + 1;
 
     System.out.print("NAMA METODE PEMBAYARAN : ");
     nama_metode = input.next();
@@ -489,7 +539,6 @@ class Main {
 
     if (dMethod.size() > 0) {
 
-
       for (int i = 0; i < dMethod.size(); i++) {
         System.out.println();
         System.out.println("ID : " + dMethod.get(i).id);
@@ -497,7 +546,7 @@ class Main {
         System.out.println("REKENING : " + dMethod.get(i).rekening);
         System.out.println();
       }
-    }  else {
+    } else {
       System.out.println();
       System.out.println("Data belum tersedia, silahkan inputkan data.");
     }
@@ -533,8 +582,11 @@ class Main {
 
   }
 
+  // -----------------------------------------------------------------------------------------------
+
   // CRUD INVOICE
-  public static void AddInvoice(List<Invoice> dInvoice, List<Customer> dCustomer, List<Item> dItem, List<Method> dMethod, Scanner input) {
+  public static void AddInvoice(List<Invoice> dInvoice, List<Customer> dCustomer, List<Item> dItem,
+      List<Method> dMethod, Scanner input) {
     int invoice;
     int[] id_barang = new int[3];
     int id_pelanggan;
@@ -554,7 +606,7 @@ class Main {
     // System.out.print("INVOICE : ");
     // invoice= input.nextInt();
 
-    invoice = dInvoice.size()+1;
+    invoice = dInvoice.size() + 1;
 
     System.out.print("ID PELANGGAN : ");
     id_pelanggan = input.nextInt();
@@ -566,13 +618,13 @@ class Main {
     // if (dItem.size() <= banyak) {
     // id_barang = new int[banyak];
     // } else {
-    //   System.out.println("Maaf barang yang diambil melebihi banyak barang");
+    // System.out.println("Maaf barang yang diambil melebihi banyak barang");
     // }
 
-    System.out.println(">> Barang yang diambil ");
+    System.out.println(">> ID barang yang diambil (max : 3)");
     System.out.println();
-    for (int i=0; i<id_barang.length; i++) {
-      System.out.print("   Barang ke-"+(i+1)+" : ");
+    for (int i = 0; i < id_barang.length; i++) {
+      System.out.print("   Barang ke-" + (i + 1) + " : ");
       id_barang[i] = input.nextInt();
     }
     System.out.println();
@@ -580,20 +632,20 @@ class Main {
     System.out.print("ID METODE PEMBAYARAN : ");
     id_metode = input.nextInt();
 
-    System.out.print("TEMPO PEMBAYARAN : ");
+    System.out.print("TEMPO PEMBAYARAN (YYY/MM/DD): ");
     tempo = input.next();
 
-    System.out.print("STATUS PEMBAYARAN : ");
-    status = input.next();
+    // System.out.print("STATUS PEMBAYARAN : ");
+    // status = input.next();
 
     total = 0;
-    for (int i=0; i<id_barang.length; i++) {
-      total += dItem.get(id_barang[i]-1).harga;
+    for (int i = 0; i < id_barang.length; i++) {
+      total += dItem.get(id_barang[i] - 1).harga;
       // System.out.println(dItem.get(id_barang[i]-1).harga);
     }
     // System.out.println(total);
 
-    Invoice iv = new Invoice(invoice, id_barang, id_pelanggan, id_metode, tempo, total, status);
+    Invoice iv = new Invoice(invoice, id_barang, id_pelanggan, id_metode, tempo, total, "utang");
     dInvoice.add(iv);
 
     System.out.println();
@@ -601,21 +653,25 @@ class Main {
 
   }
 
-  public static void GetInvoice(List<Invoice> dInvoice ){
+  public static void GetInvoice(List<Invoice> dInvoice) {
     System.out.println();
 
     if (dInvoice.size() > 0) {
 
-
       for (int i = 0; i < dInvoice.size(); i++) {
         System.out.println();
+        System.out.println("-----------------------------------");
+
         System.out.println("INVOICE PEMBAYARAN : " + dInvoice.get(i).invoice);
         System.out.println("ID PELANGGAN : " + dInvoice.get(i).id_pelanggan);
 
         System.out.println(">> Barang yang diambil ");
         System.out.println();
-        for (int j=0; i<dInvoice.get(i).id_barang.length; j++) {
-          System.out.print("   Barang ke-"+(i+1)+" : "+dInvoice.get(i).id_barang[j]);
+
+        // { 1, 2, 3 }, // total = 21000
+
+        for (int j = 0; j < 3; j++) {
+          System.out.println("   Barang ke-" + (j + 1) + " : " + dInvoice.get(i).id_barang[j]);
         }
         System.out.println();
 
@@ -625,14 +681,15 @@ class Main {
         System.out.println("STATUS PEMBAYARAN : " + dInvoice.get(i).status);
         System.out.println();
       }
-    }  else {
+    } else {
       System.out.println();
       System.out.println("Data belum tersedia, silahkan inputkan data.");
     }
 
   }
 
-  public static void UpdateInvoice(List<Invoice> dInvoice, List<Customer> dCustomer, List<Item> dItem, List<Method> dMethod, Scanner input) {
+  public static void UpdateInvoice(List<Invoice> dInvoice, List<Customer> dCustomer, List<Item> dItem,
+      List<Method> dMethod, Scanner input) {
     int invoice;
     int[] id_barang = new int[3];
     int id_pelanggan;
@@ -657,10 +714,10 @@ class Main {
       System.out.print("ID PELANGGAN : ");
       id_pelanggan = input.nextInt();
 
-      System.out.println(">> Barang yang diambil ");
+      System.out.println(">> ID barang yang diambil (max : 3)");
       System.out.println();
-      for (int i=0; i<id_barang.length; i++) {
-        System.out.print("   Barang ke-"+(i+1)+" : ");
+      for (int i = 0; i < id_barang.length; i++) {
+        System.out.print("   Barang ke-" + (i + 1) + " : ");
         id_barang[i] = input.nextInt();
       }
       System.out.println();
@@ -668,15 +725,15 @@ class Main {
       System.out.print("ID METODE PEMBAYARAN : ");
       id_metode = input.nextInt();
 
-      System.out.print("TEMPO PEMBAYARAN : ");
+      System.out.print("TEMPO PEMBAYARAN (YYY/MM/DD): ");
       tempo = input.next();
 
       System.out.print("STATUS PEMBAYARAN : ");
       status = input.next();
 
       total = 0;
-      for (int i=0; i<id_barang.length; i++) {
-        total += dItem.get(id_barang[i]-1).harga;
+      for (int i = 0; i < id_barang.length; i++) {
+        total += dItem.get(id_barang[i] - 1).harga;
       }
 
       Invoice iv = new Invoice(invoice, id_barang, id_pelanggan, id_metode, tempo, total, status);
@@ -685,9 +742,60 @@ class Main {
 
   }
 
-  public static void SortWithDate(List<Invoice> dInvoice, List<Customer> dCustomer, List<Item> dItem, List<Method> dMethod) {
-    // int r = Integer.parseInt(d.replaceAll("/",""));
-  }
+  public static void SortWithDate(List<Invoice> dInvoice, List<Customer> dCustomer, List<Item> dItem,
+      List<Method> dMethod) {
+    if (dInvoice.size() > 0) {
+      int key[] = new int[dInvoice.size()];
+      int tmp;
 
+      for (int i = 0; i < dInvoice.size(); i++) {
+        key[i] = Integer.parseInt(dInvoice.get(i).tempo.replaceAll("/", ""));
+      }
+
+      for (int i = 0; i < key.length; i++) {
+        for (int j = (key.length - 1); j > i; j--) {
+          if (key[j] < key[j - 1]) {
+            tmp = key[j];
+            key[j] = key[j - 1];
+            key[j - 1] = tmp;
+          }
+        }
+      }
+
+      System.out.println(">> Urutan data berdasarkan tanggal terdekat");
+      System.out.println();
+
+      for (int i = 0; i < dInvoice.size(); i++) {
+        tmp = Arrays.binarySearch(key, key[i]);
+
+        System.out.println("-----------------------------------");
+
+        // System.out.println(tmp+" => "+key[i]);
+        System.out.println();
+        System.out.println("INVOICE PEMBAYARAN : " + dInvoice.get(tmp).invoice);
+        System.out.println("ID PELANGGAN : " + dInvoice.get(tmp).id_pelanggan);
+
+        System.out.println(">> Barang yang diambil ");
+        for (int j = 0; j < dInvoice.get(tmp).id_barang.length; j++) {
+          System.out.println("   Barang ke-" + (j + 1) + " : " + dInvoice.get(tmp).id_barang[j]);
+        }
+        System.out.println();
+
+        System.out.println("ID METODE PEMBAYARAN : " + dInvoice.get(tmp).id_metode);
+        System.out.println("TEMPO PEMBAYARAN : " + dInvoice.get(tmp).tempo);
+        System.out.println("TOTAL HARGA : RP." + dInvoice.get(tmp).total);
+        System.out.println("STATUS PEMBAYARAN : " + dInvoice.get(tmp).status);
+        System.out.println();
+      }
+
+      System.out.println();
+
+    } else {
+      System.out.println("Maaf data belum tersedia, silahkan input data.");
+      System.out.println();
+
+    }
+
+  }
 
 }
