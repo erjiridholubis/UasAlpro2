@@ -250,7 +250,7 @@ class Main {
           // panggil fungsi cari invoice
 
           System.out.println("-------------------------------------------");
-          System.out.println("panggil fungsi cari invoice");
+          SearchInvoice(dInvoice, input);
 
         } else if (submenu == 6) {
           // panggil fungsi tampil seluruh invoice
@@ -850,6 +850,7 @@ class Main {
         // System.out.println("TOTAL HARGA : RP." + dInvoice.get(tmp).total);
         // System.out.println("STATUS PEMBAYARAN : " + dInvoice.get(tmp).status);
         // System.out.println();
+
       }
 
       System.out.println();
@@ -860,6 +861,49 @@ class Main {
 
     }
 
+  }
+
+  public static void SearchInvoice(List<Invoice> dInvoice, Scanner input) {
+    int invoice;
+    int[] id_barang = new int[3];
+    int id_pelanggan;
+    int id_metode;
+    String tempo;
+    int total;
+    String status;
+
+    System.out.println("------------------------------------");
+    System.out.println("PENCARIAN DATA TAGIHAN");
+    System.out.println("------------------------------------");
+    System.out.println();
+
+    System.out.print("INVOICE PELANGGAN : ");
+    invoice = input.nextInt();
+
+    for (int i = 0; i < dInvoice.size(); i++) {
+      
+      if (dInvoice.get(i).invoice == invoice) {
+
+        System.out.println("Data invoice pelanggan ditemukan");
+        System.out.println();
+        System.out.println("INVOICE : " + dInvoice.get(invoice - 1).invoice);
+        System.out.println("ID PELANGGAN : " + dInvoice.get(invoice - 1).id_pelanggan);
+
+        System.out.println(">> Barang yang diambil ");
+        System.out.println();
+
+        for (int j = 0; j < 3; j++) {
+          System.out.println("   Barang ke-" + (j + 1) + " : " + dInvoice.get(j).id_barang[j]);
+        }
+        
+        System.out.println();
+        System.out.println("ID METODE : " + dInvoice.get(invoice - 1).id_metode);
+        System.out.println("TEMPO : " + dInvoice.get(invoice - 1).tempo);
+        System.out.println("TOTAL : " + dInvoice.get(invoice - 1).total);
+        System.out.println("STATUS : " + dInvoice.get(invoice - 1).status);
+        System.out.println();
+      }
+    }
   }
 
 }
