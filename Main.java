@@ -36,8 +36,7 @@ class Main {
       dMethod.add(mt);
     }
 
-    int id_barang[][] = { 
-        { 1, 2, 3 }, // total = 21000
+    int id_barang[][] = { { 1, 2, 3 }, // total = 21000
         { 2, 2, 3 }, // total = 8000
         { 1, 1, 3 }, // total = 34000
         { 1, 1, 2 }, // total = 32000
@@ -757,8 +756,8 @@ class Main {
       int tmp;
 
       for (int i = 0; i < dInvoice.size(); i++) {
-          key[i][0] = Integer.parseInt(dInvoice.get(i).tempo.replaceAll("/",""));
-          key[i][1] = dInvoice.get(i).invoice;
+        key[i][0] = Integer.parseInt(dInvoice.get(i).tempo.replaceAll("/", ""));
+        key[i][1] = dInvoice.get(i).invoice;
       }
 
       for (int i = 0; i < key.length; i++) {
@@ -782,19 +781,19 @@ class Main {
 
         // System.out.println(key[i][0] + " => " + key[i][1]);
         System.out.println();
-        System.out.println("INVOICE PEMBAYARAN : " + dInvoice.get(key[i][1]-1).invoice);
-        System.out.println("ID PELANGGAN : " + dInvoice.get(key[i][1]-1).id_pelanggan);
+        System.out.println("INVOICE PEMBAYARAN : " + dInvoice.get(key[i][1] - 1).invoice);
+        System.out.println("ID PELANGGAN : " + dInvoice.get(key[i][1] - 1).id_pelanggan);
 
         System.out.println(">> Barang yang diambil ");
-        for (int j = 0; j < dInvoice.get(key[i][1]-1).id_barang.length; j++) {
-          System.out.println("   Barang ke-" + (j + 1) + " : " + dInvoice.get(key[i][1]-1).id_barang[j]);
+        for (int j = 0; j < dInvoice.get(key[i][1] - 1).id_barang.length; j++) {
+          System.out.println("   Barang ke-" + (j + 1) + " : " + dInvoice.get(key[i][1] - 1).id_barang[j]);
         }
         System.out.println();
 
-        System.out.println("ID METODE PEMBAYARAN : " + dInvoice.get(key[i][1]-1).id_metode);
-        System.out.println("TEMPO PEMBAYARAN : " + dInvoice.get(key[i][1]-1).tempo);
-        System.out.println("TOTAL HARGA : RP." + dInvoice.get(key[i][1]-1).total);
-        System.out.println("STATUS PEMBAYARAN : " + dInvoice.get(key[i][1]-1).status);
+        System.out.println("ID METODE PEMBAYARAN : " + dInvoice.get(key[i][1] - 1).id_metode);
+        System.out.println("TEMPO PEMBAYARAN : " + dInvoice.get(key[i][1] - 1).tempo);
+        System.out.println("TOTAL HARGA : RP." + dInvoice.get(key[i][1] - 1).total);
+        System.out.println("STATUS PEMBAYARAN : " + dInvoice.get(key[i][1] - 1).status);
         System.out.println();
       }
 
@@ -841,19 +840,19 @@ class Main {
 
         // System.out.println(key[i][0]+" => "+key[i][1]);
         System.out.println();
-        System.out.println("INVOICE PEMBAYARAN : " + dInvoice.get(key[i][1]-1).invoice);
-        System.out.println("ID PELANGGAN : " + dInvoice.get(key[i][1]-1).id_pelanggan);
+        System.out.println("INVOICE PEMBAYARAN : " + dInvoice.get(key[i][1] - 1).invoice);
+        System.out.println("ID PELANGGAN : " + dInvoice.get(key[i][1] - 1).id_pelanggan);
 
         System.out.println(">> Barang yang diambil ");
-        for (int j = 0; j < dInvoice.get(key[i][1]-1).id_barang.length; j++) {
-          System.out.println("   Barang ke-" + (j + 1) + " : " + dInvoice.get(key[i][1]-1).id_barang[j]);
+        for (int j = 0; j < dInvoice.get(key[i][1] - 1).id_barang.length; j++) {
+          System.out.println("   Barang ke-" + (j + 1) + " : " + dInvoice.get(key[i][1] - 1).id_barang[j]);
         }
         System.out.println();
 
-        System.out.println("ID METODE PEMBAYARAN : " + dInvoice.get(key[i][1]-1).id_metode);
-        System.out.println("TEMPO PEMBAYARAN : " + dInvoice.get(key[i][1]-1).tempo);
-        System.out.println("TOTAL HARGA : RP." + dInvoice.get(key[i][1]-1).total);
-        System.out.println("STATUS PEMBAYARAN : " + dInvoice.get(key[i][1]-1).status);
+        System.out.println("ID METODE PEMBAYARAN : " + dInvoice.get(key[i][1] - 1).id_metode);
+        System.out.println("TEMPO PEMBAYARAN : " + dInvoice.get(key[i][1] - 1).tempo);
+        System.out.println("TOTAL HARGA : RP." + dInvoice.get(key[i][1] - 1).total);
+        System.out.println("STATUS PEMBAYARAN : " + dInvoice.get(key[i][1] - 1).status);
         System.out.println();
       }
 
