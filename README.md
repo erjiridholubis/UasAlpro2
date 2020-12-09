@@ -71,6 +71,7 @@ Algoritma :
     8. Setiap proses selesai dilakukan, pengguna (pemilik warung) ditanya apakah ingin melanjutkan program atau ingin menghentikannya.
 
 Implementasi dari 5 Materi Algoritma dan Pemprograman 2 :
+
     1.	Pada program catatan hutang ini menggunakan abstract data type (ADT) untuk memisahkan struktur penyimpanan dari beberapa object antara lain, pelanggan, barang, metode  pembayaran dan tagihan. 
     2.	Struktur data yang digunakan yaitu array dengan tipe arraylist untuk mempermudah menyimpan data yang menghutang dan pemilik warung juga bisa menambah dan mengupdate data yang telah diinisialisasi.
     3.	Perulangan yang digunakan yaitu while dan for. Perulangan while digunakan untuk membuat menu awal dari beberapa object seperti pelanggan, barang, metode pembayaran dan tagihan.
