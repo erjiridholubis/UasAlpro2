@@ -243,7 +243,7 @@ class Main {
           // panggil fungsi ubah status pembayaran
 
           System.out.println();
-          UpdateInvoice(dInvoice, dCustomer, dItem, dMethod, input);
+          updateStatusInvoice(dInvoice, input);
           System.out.println("-------------------------------------------");
 
         } else if (submenu == 5) {
@@ -926,4 +926,53 @@ class Main {
 
     }
   }
+
+  public static void updateStatusInvoice(List<Invoice> dInvoice, Scanner input) {
+    int invoice;
+
+    System.out.println("------------------------------------");
+    System.out.println("UPDATE STATUS PEMBAYARAN");
+    System.out.println("------------------------------------");
+    System.out.println();
+
+    System.out.print("INVOICE PELANGGAN : ");
+    invoice = input.nextInt();
+    Boolean ketemu = false;
+
+    for (int i = 0; i < dInvoice.size(); i++) {
+      if (dInvoice.get(i).invoice == invoice) {
+        System.out.println("Data invoice pelanggan ditemukan");
+        ketemu = true;
+        System.out.println();
+        System.out.println("INVOICE : " + dInvoice.get(invoice - 1).invoice);
+        System.out.println("ID PELANGGAN : " + dInvoice.get(invoice - 1).id_pelanggan);
+
+        System.out.println(">> Barang yang diambil ");
+        System.out.println();
+
+        for (int j = 0; j < 3; j++) {
+          System.out.println("   Barang ke-" + (j + 1) + " : " + dInvoice.get(j).id_barang[j]);
+
+        }
+
+        System.out.println();
+        System.out.println("ID METODE : " + dInvoice.get(invoice - 1).id_metode);
+        System.out.println("TEMPO : " + dInvoice.get(invoice - 1).tempo);
+        System.out.println("TOTAL : " + dInvoice.get(invoice - 1).total);
+        System.out.println("STATUS : " + dInvoice.get(invoice - 1).status);
+        System.out.println();
+
+      }
+    }
+
+    if (ketemu == false) {
+      System.out.println("Data invoice pelanggan tidak ditemukan");
+
+    } else {
+      System.out.print("Status bayar (lunas/hutang): ");
+      dInvoice.get(invoice - 1).status = input.next();
+      System.out.println("Status pembayaran di ubah.");
+    }
+  }
+
 }
