@@ -70,3 +70,10 @@ Algoritma :
     7. Didalm object invoice dapat melakukan input dan pencarian, pengurutan berdasarkan paling banyak, paling dekat waktu tempo, dan update status pembayaran.
     8. Setiap proses selesai dilakukan, pengguna (pemilik warung) ditanya apakah ingin melanjutkan program atau ingin menghentikannya.
 
+Implementasi dari 5 Materi Algoritma dan Pemprograman 2 :
+    1.	Pada program catatan hutang ini menggunakan abstract data type (ADT) untuk memisahkan struktur penyimpanan dari beberapa object antara lain, pelanggan, barang, metode  pembayaran dan tagihan. 
+    2.	Struktur data yang digunakan yaitu array dengan tipe arraylist untuk mempermudah menyimpan data yang menghutang dan pemilik warung juga bisa menambah dan mengupdate data yang telah diinisialisasi.
+    3.	Perulangan yang digunakan yaitu while dan for. Perulangan while digunakan untuk membuat menu awal dari beberapa object seperti pelanggan, barang, metode pembayaran dan tagihan.
+    4.	Perkondisian yang digunakan yaitu if…else if…else. Perkondisian ini digunakan pada setiap menu crud seperti input, update, cari dan urut, sehingga pemilik warung dapat memilih menu tersebut.
+    5.	Pencarian yang digunakan yaitu sequential search. Pencarian ini memudahkan pemilik warung dalam mencari data orang yang menghutang seperti pada menu crud object invoice. Dengan menginput id orang yang menghutang, maka akan keluar tampilan datanya.
+    6.	Pengurutan digunakan pada menu object tagihan yaitu mengurutkan nominal hutang dan tempo pembayaran. Dua pengurutan tersebut terdapat di menu crud, sehingga pemilik warung dapat melihat data orang yang menghutang berdasarkan urutan nominal hutang yang terbanyak hingga sedikit atau tempo pembayaran yang masih lama atau terdekat.
