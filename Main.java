@@ -61,7 +61,7 @@ class Main {
       System.out.println();
 
       System.out.println("Pilihan Menu:");
-      System.out.println("1. pelanggan");
+      System.out.println("1. Pelanggan");
       System.out.println("2. Barang");
       System.out.println("3. Metode Pembayaran");
       System.out.println("4. Tagihan");
@@ -172,6 +172,7 @@ class Main {
         System.out.println("2. Ubah metode pembayaran");
         System.out.println("3. Lihat Seluruh Metode Pembayaran");
 
+        System.out.println();
         System.out.print("Silahkan Pilih Submenu : ");
         submenu = input.nextInt();
 
@@ -372,8 +373,9 @@ class Main {
   }
 
   public static void SearchCustomer(List<Customer> dCustomer, Scanner input) {
-    int id, harga, stok;
+    int id;
     String nama_barang;
+    String nama_pelanggan, alamat_pelanggan, no_hp;
 
     System.out.println("------------------------------------");
     System.out.println("PENCARIAN DATA CUSTOMER");
@@ -382,20 +384,24 @@ class Main {
 
     System.out.print("ID CUSTOMER : ");
     id = input.nextInt();
+    Boolean ketemu = false;
 
-    if ((dCustomer.size() < id) || dCustomer.get(id - 1).id != id) {
-      System.out.println();
-      System.out.println("Data Customer tidak ditemukan.");
-
-    } else {
+    for (int i = 0; i < dCustomer.size(); i++) {
+      if (dCustomer.get(i).id == id) {
+      ketemu = true;
       System.out.println("Data Customer ditemukan");
       System.out.println();
       System.out.println("ID : " + dCustomer.get(id - 1).id);
       System.out.println("NAMA : " + dCustomer.get(id - 1).nama_pelanggan);
       System.out.println("ALAMAT : " + dCustomer.get(id - 1).alamat_pelanggan);
       System.out.println("HP : " + dCustomer.get(id - 1).no_hp);
-      System.out.println();
-    }
+
+    } 
+  }
+      if(ketemu==false) {
+        System.out.println();
+        System.out.println("Data Customer tidak ditemukan.");
+      }
 
   }
 
@@ -494,21 +500,26 @@ class Main {
 
     System.out.print("ID BARANG : ");
     id = input.nextInt();
+    Boolean ketemu = false;
 
-    if ((dItem.size() < id) || dItem.get(id - 1).id != id) {
+    for (int i = 0; i < dItem.size(); i++) {
+      if (dItem.get(i).id == id) {
+        ketemu = true;
+        System.out.println("Data barang ditemukan");
+        System.out.println();
+        System.out.println("ID : " + dItem.get(id - 1).id);
+        System.out.println("NAMA BARANG : " + dItem.get(id - 1).nama_barang);
+        System.out.println("HARGA : " + dItem.get(id - 1).harga);
+        System.out.println("STOK : " + dItem.get(id - 1).stok);
+        System.out.println();
+        
+      } 
+    }
+    
+    if(ketemu==false){
       System.out.println();
       System.out.println("Data barang tidak ditemukan.");
-
-    } else {
-      System.out.println("Data barang ditemukan");
-      System.out.println();
-      System.out.println("ID : " + dItem.get(id - 1).id);
-      System.out.println("NAMA BARANG : " + dItem.get(id - 1).nama_barang);
-      System.out.println("HARGA : " + dItem.get(id - 1).harga);
-      System.out.println("STOK : " + dItem.get(id - 1).stok);
-      System.out.println();
     }
-
   }
 
   // -----------------------------------------------------------------------------------------------
