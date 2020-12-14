@@ -142,7 +142,7 @@ class Main {
           // panggil fungsi ubah data barang
 
           System.out.println();
-          UpdateCustomer(dCustomer, input);
+          UpdateItem(dItem, input);
           System.out.println("-------------------------------------------");
 
         } else if (submenu == 3) {
